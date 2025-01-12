@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: tetra-nerf
+Version: 0.1.1
+Summary: Official implementation of Tetra-NeRF paper
+Author: Jonas Kulhanek
+Author-email: jonas.kulhanek@live.com
+Requires-Python: >=3.7
+License-File: LICENSE
+Requires-Dist: trimesh>=3.20.2

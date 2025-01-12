@@ -1,0 +1,157 @@
+F3D-Gaus:
+  seed: 420
+  unet_feature_dim: 64 # ignored if render is false 
+  
+  training:
+    learning_rate: 6e-7
+    batch_size: 7
+    save_and_sample_every: 200 
+    save_every: 4000 
+    dataset: ImagenetGS_test_256
+    train_num_steps: 300000
+    dataset_folder: /root/autodl-tmp/imagenet_256_with_depth/ 
+
+  rendering:
+    render: True
+    renderer_path: ./eg3d/eg3d/  # eg3d path
+    estimate_camera: False
+    view_transform: True
+    triplane_renderer_config:
+      rendering_kwargs:
+        ray_start: auto
+        ray_end: auto
+        box_warp: 2
+        depth_resolution: 32   
+        depth_resolution_importance: 32  
+        disparity_space_sampling: False
+        clamp_mode: softplus
+      mlp_decoder_config:
+        num_of_layers: 2
+        add_global_position_as_feature: 1
+        fourier_n: 4
+        decoder_lr_mul: 1
+        decoder_output_dim: 3
+        zero_outside_triplanes: True
+        decoder_time_feature: False
+        lod: True
+
+logging:
+  version: debug256_prop01
+  save_dir: /root/autodl-tmp/logs/
+  load_model: /root/F3D_Gaus_v2/pretrained_models/checkpoint_256x256_v0.pt
+
+dataset_params:
+  all_classes: True
+  z_near: 6.667 
+  z_far: 8.667
+  norm_depth: false
+  norm_depth_to01: true
+
+opt:
+  w_weight: 0.0
+  w_depth: 2.0
+  w_normal: 0.2
+  w_unet_depth: 0.0
+  w_alpha: 1.0
+  w_clip: 0.35
+  w_tv: 0.1
+  w_perceptual: 2
+  w_rgb: 1
+  w_warping: 10
+  w_warping_seq: 0
+  w_prop: 10
+  update_pose: true
+
+  w_depth_normal: 0.0
+  w_distortion: 0.0
+
+  # novel related
+  denominator2: 18
+  start_diff: 24
+  final_diff: 6
+  start_iter: 0
+  end_iter: 100000
+
+  # cycle related
+  use_cycle: true
+  disable_cycle: false
+
+  # cycle related:
+  detach_cycle_input: true 
+  clip_cycle_input: true 
+  merge_all: false 
+  
+  # clip related
+  squre_clip: 10000.0 
+  random_type: uniform # ['uniform', 'normal']
+
+  # matching related
+  loss_matching_type: l1 # ['l1', 'l2']
+  w_matching_xyz: 0 
+  w_matching_fdc: 0
+  w_matching_opacity: 0
+  w_matching_scale: 0
+  w_matching_rotation: 0
+
+  dist_threshold: 0.3
+
+  # erode related
+  erode_warped_mask: false 
+  erode_kernel_size: 5 
+  erode_pad_size: 2 
+
+  # prop related
+  prop_input_type: v12 # v1: rendered, v2: warped, v3: randomly sampled
+  prop_input_rendered_ratio: 0.5 # only works for v3
+  num_seq: 16
+  iter1: 8
+  iter2: 5
+
+
+  # depth gt
+  depth_type: leres #leres # da2 #marigold 
+  normal_type: dsine # omni 
+
+
+model:
+  origin_distances: false
+  training_resolution: 256 
+  fov: 13.164
+  radius: 7.667 
+  look_at: 7.667 
+
+  max_sh_degree: 1 #
+  inverted_x: false
+  inverted_y: true
+  name: SingleUNet 
+  opacity_scale: 0.001 
+  opacity_bias: -3.0 
+
+  scale_bias: 0.01
+  scale_scale: 0.0005 
+
+  xyz_scale: 0.000001 
+  xyz_bias: 0.0 
+  depth_scale: 1.0
+  depth_bias: 0.0
+  network_without_offset: false 
+  network_with_offset: true 
+  attention_resolutions:
+  - 16
+  num_blocks: 3 
+  cross_view_attention: true
+  base_dim: 128
+  isotropic: false
+
+  network_with_uncertainty: false
+
+
+  # median depth of 2DGS
+  # for bounded scene, use median depth, i.e., depth_ratio = 1; 
+  # for unbounded scene, use expected depth, i.e., depth_ration = 0, to reduce disk anliasing.
+  depth_ratio: 1.0 
+  inverse_opacity: false 
+
+
+  # warping related 
+  threshold: 0.9 
