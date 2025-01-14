@@ -13,7 +13,7 @@
 
 
 <div align="center">
-    <a href='' target="_blank"><img src='https://img.shields.io/badge/arXiv-2404.13679-b31b1b.svg'></a>  
+    <a href='https://arxiv.org/abs/2501.06714' target="_blank"><img src='https://img.shields.io/badge/arXiv-2501.06714-b31b1b.svg'></a>  
     <a href='https://w-ted.github.io/publications/F3D-Gaus/' target="_blank"><img src='https://img.shields.io/badge/Project-Page-Green'></a>  
 </div>
 </p>
