@@ -86,7 +86,7 @@ This project is built upon [G3DR](https://preddy5.github.io/g3dr_website/) and [
 @article{wang2025f3dgaus,
     title={F3D-Gaus: Feed-forward 3D-aware Generation on ImageNet with Cycle-Consistent Gaussian Splatting},
     author={Wang, Yuxin and Wu, Qianyi and Xu, Dan},
-    journal={arXiv preprint arXiv:},
+    journal={arXiv preprint arXiv:2501.06714},
     year={2025}
 }
 ```
