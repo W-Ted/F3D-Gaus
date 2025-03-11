@@ -1,5 +1,5 @@
 <p align="center">
-<h1 align="center"><strong>F3D-Gaus: Feed-forward 3D-aware Generation on ImageNet with Cycle-Consistent Gaussian Splatting</strong></h1>
+<h1 align="center"><strong>F3D-Gaus: Feed-forward 3D-aware Generation on ImageNet with Cycle-Aggregative Gaussian Splatting</strong></h1>
 <!-- <h3 align="center">Arxiv 2025</h3> -->
 
 <p align="center">
@@ -84,7 +84,7 @@ This project is built upon [G3DR](https://preddy5.github.io/g3dr_website/) and [
 
 ```BibTeX
 @article{wang2025f3dgaus,
-    title={F3D-Gaus: Feed-forward 3D-aware Generation on ImageNet with Cycle-Consistent Gaussian Splatting},
+    title={F3D-Gaus: Feed-forward 3D-aware Generation on ImageNet with Cycle-Aggregative Gaussian Splatting},
     author={Wang, Yuxin and Wu, Qianyi and Xu, Dan},
     journal={arXiv preprint arXiv:2501.06714},
     year={2025}
